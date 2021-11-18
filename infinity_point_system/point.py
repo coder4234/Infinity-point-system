@@ -10,46 +10,38 @@ buttonone = (0, 27.84, 67.06)
 buttontwo = (87.8, 6.7, 37.3)
 buttonhalf = (0,190,0)
 white = (200,200,200)
-buttonnextpage = (200,200,200)
+buttonnextpage = (200,0,0)
 green = (0,200,0)
 blue = (0,0,200)
 FONT = pygame.font.Font("freesansbold.ttf", 50)
 
 def loop():
 
+    buttonnextpage = (200,0,0)
+    button_next_page = pygame.Rect(508,550,80,30)
     clock = pygame.time.Clock()
     done = False
     image = pygame.image.load("infinity_Point.png")
-    image_three = pygame.image.load("notice.jpg")
-    while not done:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                done = True
-
-        screen.blit(image_three, (0,537))
-        screen.blit(image, (50,25))
-        pygame.display.update()
-        clock.tick(30)
-
-loop()
-
-def loop():
-
-
-    clock = pygame.time.Clock()
-    done = False
     image_two = pygame.image.load("Instructions.jpg")
 
+
+    screen.blit(image,(45,40))
     while not done:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
-        
-        screen.blit(image_two,(0,0))        
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if button_next_page.collidepoint(event.pos):
+                            screen.blit(image_two,(0,0))  
+
+
+        pygame.draw.rect(screen, buttonnextpage, button_next_page)
         pygame.display.update()
         clock.tick(30)
 
 loop()
+
 
 def loop():
 
